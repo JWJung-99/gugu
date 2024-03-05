@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>딩동댕 구구단</title>
+
+    <link rel="stylesheet" href="./style.css">    
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+      function Header () {
+        return (
+          <header>
+            <h1>딩동댕 구구단</h1>
+          </header>
+        )
+      }
+
+      function GugudanInput (props) {
+        const [input, setInput] = React.useState('');
+
+        function handleAdd() {
+          if (input.trim() === ''){
+            alert('숫자를 입력하세요!');
+          } else {
+            props.changeNumber(Number(input));
+          }
+        }
+
+        function handleKeyUp(e) {
+          if (e.key === 'Enter') handleAdd();
+        }
+
+        return (
+          <div className="gugudanInput">
+            <input type="number" value={input} onChange={event => setInput(event.target.value)} onKeyUp={handleKeyUp} placeholder="숫자를 입력하세요!" />
+            <button type="button" onClick={handleAdd}>시작!</button>
+          </div>
+        )
+      }
+
+      function GugudanItem ({ number, item }) {
+        return  (
+          <li>
+            <span>{number} x {item} = {number * item}</span>
+          </li>
+        )
+      }
+
+      function GugudanList (props) {
+        const numList = [...' '.repeat(9)].map((item, index) => item = ++index);
+        const list = numList.map(item => <GugudanItem key={item} item={item} number={props.number}/>);
+    
+        return (
+          <ul className="gugudanList">
+            <li><p><strong>{props.number}</strong> 단</p></li>
+            { list }
+          </ul>
+        )
+      }
+
+      function Gugudan (props) {
+        const [number, setNumber] = React.useState(0);
+
+        function changeNumber(number) {
+          setNumber(number);
+        }
+
+        return (
+          <div id="main">
+            <div id="container">
+              <GugudanInput changeNumber={changeNumber}/>
+              { number !== 0 ? <GugudanList number={number} /> : <p className="teasing">상식 : 0 x n = 0</p> }
+            </div>
+          </div>
+        )
+      }
+
+      function App () {
+        return (
+          <div id="gugudan">
+            <Header />
+            <Gugudan />
+          </div>
+        )
+      }
+
+      ReactDOM.createRoot(document.querySelector('#root')).render(<App />);
+
+    </script>
+
+  </body>
+</html>

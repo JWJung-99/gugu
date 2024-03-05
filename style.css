@@ -1,0 +1,114 @@
+/* Reset */
+p, ul {
+  margin: unset;
+  padding: unset;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+
+/* Typography */
+@font-face {
+  font-family: 'SejonghospitalBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  font-family: 'SejonghospitalBold';
+}
+
+/* Components */
+#root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 40px;
+  background-color: #008550;
+  border-radius: 30px;
+  color: white
+}
+
+header {
+  text-align: center;
+}
+
+#container .teasing {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+#gugudan {
+  text-align: center;
+}
+
+.gugudanInput input {
+  margin-right: 10px;
+  display: inline-block;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 4px;
+  height: 30px;
+  outline: unset;
+}
+
+.gugudanInput input:focus {
+  border-color: white;
+}
+
+.gugudanInput button {
+  display: inline-block;
+  background-color: white;
+  width: 60px;
+  height: 30px;
+  color: black;
+  border-radius: 4px;
+}
+
+.gugudanInput button:hover {
+  background-color: black;
+  color: white;
+}
+
+.gugudanList {
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 30px 0;
+  background-color: white;
+  color: black;
+}
+
+.gugudanList > li > p {
+  margin-bottom: 10px;
+}
+
+.gugudanList li > p > strong {
+  font-size: 40px;
+  color: #008550;
+  font-weight: 700;
+}
+
+.gugudanList > li {
+  margin-bottom: 8px;
+}
+
+.gugudanList > li:last-child {
+  margin-bottom: 0;
+}
+
+.gugudanList > li span {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
